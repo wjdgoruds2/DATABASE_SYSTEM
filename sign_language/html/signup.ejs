@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Signup</title>
+  <link rel="stylesheet" type="text/css" href="css/signup.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap');
+</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+    var pass;
+  </script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="Sign">
+      <h2 style="font-family: 'Sunflower', sans-serif;"onclick="movemain()">수어 학습 사이트</h2>
+      <p style="font-family: 'Sunflower', sans-serif;" class="c" onclick="movemain()">메인 페이지로</p>
+    </div>
+
+    <div class="box">
+      <p class="title" style="font-family: 'Sunflower', sans-serif;">회원가입</p>
+      <hr>
+      <form class="login-form" action="/signup1" method="post">
+        <input style="font-family: 'Sunflower', sans-serif;"type="text" name="username" placeholder="이름" />
+        <input style="font-family: 'Sunflower', sans-serif;"type="text" name="userID" placeholder="아이디" />
+        <input style="font-family: 'Sunflower', sans-serif;"type="password" name="password" placeholder="비밀번호" />
+        <input style="font-family: 'Sunflower', sans-serif;"type="password" name="password_check" placeholder="비밀번호 확인" />
+        <button style="font-family: 'Sunflower', sans-serif;"type="submit" id="asdf" value=SIGNUP onclick="check();">가입하기</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    function movemain() {
+      location.href = "/";
+    }
+
+    function check() {
+      var name = document.getElementsByName("username")[0].value;
+      var id = document.getElementsByName("userID")[0].value;
+      var pw = document.getElementsByName("password")[0].value;
+      var pw_ck = document.getElementsByName("password_check")[0].value;
+
+      if (name == '' || name == null) {
+        alert("이름을 입력해주세요.");
+        return;
+      }
+      if (id == '' || id == null) {
+        alert("아이디를 입력해주세요.");
+        return;
+      }
+      if (pw == '' || id == null) {
+        alert("비밀번호를 입력해주세요.");
+        return;
+      }
+      if (pw_ck == '' || pw_ck == null || pw_ck != pw) {
+        alert("비밀번호를 확인해주세요.");
+        return;
+      }
+    }
+  </script>
+</body>
+
+</html>

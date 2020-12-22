@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type='text/css' href="css/mydir.css" type="text/css">
+  <link rel='stylesheet' type='text/css' href='vendor/bootstrap/css/bootstrap.min.css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap');
+</style>
+    <meta charset="utf-8">
+    <title>
+      <%= title %>
+    </title>
+  </head>
+  <body>
+  <!----타이틀 ----------------------------------------------------------->
+   <section class="main-tabs">
+  <h1  style="text-algin:center;font-family: 'Sunflower', sans-serif;" onclick="movemain()">수어 학습 사이트</h1>
+  <h3 style="text-algin:center;font-family: 'Sunflower', sans-serif;" > 나만의 단어장 </h3>
+  <!-------------------------검색으로 돌아가기------------------------->
+     <div class="menu-tabs-container">
+    <button style="text-algin:center;font-family: 'Sunflower', sans-serif;" class="menu-tabs" onclick="movepage()">검색으로 돌아가기</button>
+    <script>
+      function movepage(){
+        location.href = "/searchpage";
+      }
+    </script>
+    </div>
+  </section>
+  <br>
+  <br>
+    <script>
+      function postid(clicked_id){
+       var form = document.createElement("form");
+       form.setAttribute("method", "post");
+       form.setAttribute("action","/deletedir");
+       document.body.appendChild(form);
+       var insert = document.createElement('input');
+       insert.setAttribute("type","hidden");
+       insert.setAttribute("name","test3");
+       insert.setAttribute("value",clicked_id);
+       form.appendChild(insert);
+       form.submit();
+      }
+       function movemain() {
+          location.href = "/";
+        }
+  </script>
+  <!----------맨위로 버튼 ------------------------------------------------------------>
+    <a style="position:fixed;bottom:20px;right:75px;" href="#" title="맨 위로">
+  <img class="arrow" src="arrow.png"></a> 
+  <div id="print">
+    <form>
+    <% if(locals.data){%>
+      <table border=1px solid black>
+        <tr>
+          <td>이름</td>
+          <td>이미지</td>
+          <td>삭제버튼</td>
+        </tr>
+        <% for(let i = 0; i<data.length; i++){%>
+          <tr>
+            <td><%=data[i].title%></td>
+            <td><img width="200" height="200" src=<%=data[i].img%>></img></td>
+            <td><input type="button" class="tdclass" id=<%=data[i].slid%> value="삭제" onclick="postid(this.id)"></input></td>
+          </tr>
+          <%}%>
+        <%}%>
+      </table><br><br>
+      <% if(locals.text){%>
+        <p><%=locals.text%></p>
+      <%}%>
+
+    </form>
+    </div>
+    <input class="tdclass" type="button" value="인쇄하기" id="print" onclick="window.print()"/>
+<div class="fixed">
+ <p style="text-algin:center;font-family: 'Sunflower', sans-serif;" >최근 <br>검색한 단어</p>
+      <%if(locals.data2)%>
+      <p style="text-algin:center;font-family: 'Sunflower', sans-serif;"><%=locals.data2[0]%></p>
+      <p style="text-algin:center;font-family: 'Sunflower', sans-serif;"><%=locals.data2[1]%></p>
+      <p style="text-algin:center;font-family: 'Sunflower', sans-serif;"><%=locals.data2[2]%></p>
+      <%if(locals.text1){%>
+  <script>
+    alert(locals.text1)
+  </script>
+  <%}%>
+  </div>
+  </body>
+
+</html>

@@ -1,0 +1,36 @@
+{
+  "name": "signlanguage",
+  "version": "1.0.0",
+  "description": "오픈소스웹프로그램 기말 프로젝트",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Atom-478/SINGLANGUAGE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Atom-478/SINGLANGUAGE/issues"
+  },
+  "homepage": "https://github.com/Atom-478/SINGLANGUAGE#readme",
+  "dependencies": {
+    "alert": "^5.0.0",
+    "alert-node": "^3.0.11",
+    "body-parser": "^1.19.0",
+    "dialog": "^0.3.1",
+    "ejs": "^3.1.5",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "express-mysql-session": "^2.1.4",
+    "express-session": "^1.17.1",
+    "koalanlp": "^2.1.2",
+    "korean-text-analytics": "0.0.7",
+    "mecab-ya": "^0.1.1",
+    "mysql": "^2.18.1",
+    "python-shell": "^2.0.1",
+    "sync-mysql": "^3.0.1"
+  }
+}

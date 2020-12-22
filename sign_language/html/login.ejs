@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Login</title>
+		<link rel="stylesheet" type='text/css' href="css/login.css">
+		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap');
+</style>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+
+	  <div class="wrapper">
+	    <div class="Sign">
+	      <h2 style="font-family: 'Sunflower', sans-serif;" onclick="movemain()">수어 학습 사이트</h2>
+	      <p style="font-family: 'Sunflower', sans-serif;"class="c" onclick="movesignup()">회원가입하기</p>
+	    </div>
+
+	    <div class="box">
+	      <p style="font-family: 'Sunflower', sans-serif;"class="title">로그인</p>
+	      <hr>
+
+				<%if(locals.text){%>
+				  <%=locals.text%>
+				  <%}else{%>
+	      <form class="login-form" action="/login1" method="post">
+	        <input type="text" name="userID" placeholder="아이디" />
+	        <input type="password" name="password" placeholder="비밀번호" />
+	        <button type="submit" id="asdf" value="LOGIN" onclick="check();">로그인</button>
+	      </form>
+				<%}%>
+	    </div>
+	  </div>
+	        <script>
+	        function movemain(){
+	          location.href = "/";
+	        }
+			function movesignup(){
+				location.href="/signup";
+			}
+			function movelogin() {
+          	location.href = "/login";
+        }
+	        function check() {
+	            var id = document.getElementsByName("userID")[0].value;
+	            var pw = document.getElementsByName("password")[0].value;
+	
+	            if (id == '' || id == null) {
+	              alert("아이디를 입력해주세요.");
+	              return false;
+	            }
+	            if (pw == '' || id == null) {
+	              alert("비밀번호를 입력해주세요.");
+	              return false;
+	            }
+
+	        }
+	    </script>
+	</body>
+</html>

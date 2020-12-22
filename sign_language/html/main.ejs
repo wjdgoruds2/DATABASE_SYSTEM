@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <link rel="stylesheet" type='text/css' href="css/main.css" type="text/css">
+  <link rel='stylesheet' type='text/css' href='vendor/bootstrap/css/bootstrap.min.css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap');
+</style>
+<header>
+  <title>수어 학습 사이트</title>
+</header>
+ </head>
+ <body>
+
+   <!--메뉴 main-tabs -->
+ <section class="main-tabs" style="background-color:#eee'">
+  <h1  onclick="movemain()">수어 학습 사이트</h1>
+  <h3>나만의 단어장으로 원하는 수어들을 학습해보세요!</h3>
+  <div class="menu-tabs-container"  >
+  <a class="menu-tabs" href="#footer">더 알아보기</a>
+  <a class="menu-tabs" onclick="movepage()">검색</a>
+  <a class="menu-tabs" onclick="movepage2()">나만의 단어장</a>
+  <a class="menu-tabs" onclick="movesignup()">회원가입</a>
+      <%if(locals.text){%>
+      <form class="login-form" action="/logout" method="get">
+        <button class="menu-tabs" type="submit" value="logout">로그아웃</button>
+      </form>
+      <%}else{%>
+      <a class="menu-tabs" onclick="movelogin()">로그인</a>
+      <%}%> 
+ 
+  </div>
+  </section>
+  <a style="position:fixed;bottom:20px;right:75px;" href="#" title="맨 위로">
+  <img class="arrow" src="arrow.png"></a> 
+
+  <!--페이지 이동 스크립트 ------>
+      <script>
+      function movepage(){
+        location.href = "/searchpage";
+      }
+
+      function movepage2(){
+        location.href = "/mydir";
+      }
+
+        function movelogin() {
+          location.href = "/login";
+        }
+
+        function movesignup() {
+          location.href = "/signup";
+        }
+
+        function movemain() {
+          location.href = "/";
+        }
+    </script>
+<!----------------------이미지 슬라이드 :추천 수어단어----------------------->
+<div class="container-fluid text-center bg-1">
+<h3 style="text-algin:center;font-family: 'Sunflower', sans-serif;">대표적인 수어단어</h3>
+<img src="word1.png" id="mainImage"alt="오늘의단어1" style="width:70%;height:300px;">
+</div>
+
+<!----------------플로팅:최근 검색한 단어---------------------------->
+ <div class="fixed">
+ <p >최근 검색한 단어</p>
+      <%if(locals.data2)%>
+      <p><%=locals.data2[0]%></p>
+      <p><%=locals.data2[1]%></p>
+      <p><%=locals.data2[2]%></p>
+      <%if(locals.text1){%>
+  <script>
+    alert(locals.text1)
+  </script>
+  <%}%>
+  </div>
+  <div>
+<!-------구글맵 출력------------------------------------->
+<div id="map" ></div>
+<!-------구글차트 출력------------------------------------->
+<div id="chart_div"></div>
+ <!----사이트 이동 --->
+ </div>
+<br><br>
+<div id="footer">
+<br><br>
+        <select onchange="window.open(value,'_blank');">
+          <option value="">--------------------------------   관련 사이트   --------------------------------</option>
+          <option value="http://slitt.deafkorea.com/">한국농아인협회</option>
+          <option value="http://sldict.korean.go.kr/front/main/main.do">한국수어사전</option>
+        </select>
+</div>
+<!-------------스크립트 -------------------------------------->
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+            google.charts.load('current', {'packages':['corechart']});
+//구글차트
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        // Create the data table for CHART 1
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', '종류');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+			['몸짓', 2],
+			['구어', 1],
+			['필담', 2],
+			['수어', 3],
+
+        ]);
+
+        // Set chart options for CHART 1
+        var options = {title:'청각장애인-주로 사용하는 의사소통 방법(중복)\n\n',
+                       width: 480,
+					            height: 400,
+					  legend: 'bottom', // Left, Right or None
+					  pieHole: 0.2,
+					  pieStartAngle: 90,
+					  pieSliceText: 'label',
+					  slices:{
+						  0: {offset: 0, color: 'silver'},
+						  1: {offset: 0, color: 'lightgray'},
+						  2: {offset: 0, color: 'gray'},
+						  3: {offset: 0.1, color: 'blue'},
+
+					  }
+			   		   
+					  };
+
+        // Instantiate and draw our CHART 1, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+<script>
+ //구글맵 스크립트
+function myMap() {  
+  var mapCanvas = document.getElementById("map");
+  var sign = new google.maps.LatLng(37.579233, 126.813748);
+  var mapOptions = {
+  	center:sign, 
+    zoom: 18
+  };
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+  
+  var marker = new google.maps.Marker({
+	position:sign,
+  animation:google.maps.Animation.BOUNCE,
+	icon: 'point.png'	
+  });
+  marker.setMap(map);
+  var infowindow = new google.maps.InfoWindow({
+    content: "국립국어원: 서울특별시 강서구 방화3동 827"
+  });
+  infowindow.open(map,marker);
+} 
+//이미지 슬라이드 스크립트
+var myImage=document.getElementById("mainImage");
+var imageArray=["word1.png","word2.png","word3.png"];
+var imageIndex=0;
+
+function changeImage(){
+myImage.setAttribute("src",imageArray[imageIndex]);
+imageIndex++;
+if(imageIndex>=imageArray.length){
+  imageIndex=0;
+}
+}
+setInterval(changeImage,3000);
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfgakhKeLvDJdWLNdPbMlW6TGw0392K8k&callback=myMap"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</body>
+</html>

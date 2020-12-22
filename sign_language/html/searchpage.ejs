@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+          <link rel="stylesheet" type='text/css' href="css/searchpage.css" type="text/css">
+  <link rel='stylesheet' type='text/css' href='vendor/bootstrap/css/bootstrap.min.css'>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap');
+</style>
+    <title>
+      <%= title %>
+    </title>
+    <script>
+        function postid(clicked_id){
+         var form = document.createElement("form");
+         form.setAttribute("method", "post");
+         form.setAttribute("action","/adddir1");
+         document.body.appendChild(form);
+
+         var insert = document.createElement('input');
+         insert.setAttribute("type","hidden");
+         insert.setAttribute("name","test2");
+         insert.setAttribute("value",clicked_id);
+         form.appendChild(insert);
+         form.submit();
+        }
+         function movelogin() {
+          location.href = "/login";
+        }
+        function today() {
+          location.href = "/today";
+        }
+    </script>
+  </head>
+  <body>
+ <!-----메인--------------------------> 
+  <section class="main-tabs" >
+  <h1 onclick="movemain()">수어 학습 사이트</h1>
+  <h3>나만의 단어장으로 원하는 수어들을 학습해보세요!</h3>
+    <!------------로그아웃, 단어장---------------------->
+   <div class="menu-tabs-container">
+
+      <%if(locals.logindata==""){%>
+        <form class="login-form", action="/login", method="get">
+          <button style="font-family: 'Sunflower', sans-serif;" class="menu-tabs" type="submit" value="OK">로그인</button>
+        </form>
+  <%=locals.text%>
+  <%}else{%>
+    <form class="login-form", action="/logout", method="get">
+      <button style="font-family: 'Sunflower', sans-serif;" class="menu-tabs" type="submit" value="OK">로그아웃</button>
+  </form>
+    <%}%>
+    
+  
+    </form>
+      <a class="menu-tabs" onclick="movepage()">나만의 단어장</a>
+   </div>
+    <script>
+      function movepage(){
+        location.href = "/mydir";
+      }
+           function movemain(){
+        location.href = "/";
+      }
+    </script>
+  </section>
+  
+  <!------- 카테고리------->
+    
+ <br><br>
+  <div class="category" style="width:250px;float:left">
+       <form action = "/search2" accept-charset="utf-8" name = "category" method = "post"> 
+            <fieldset style = "width:200">
+                 <legend style="font-family: 'Sunflower', sans-serif;">카테고리별 보기</legend>
+                <select name = "category" style="width:120px;font-family: 'Sunflower', sans-serif;">
+                        <optgroup label = "일상생활 수어" style="font-family: 'Sunflower', sans-serif;">
+                            <option value="" selected disabled hidden>==select==</option>
+                            <option value = "인간" style="font-family: 'Sunflower', sans-serif;" >인간</option>
+                            <option value = "삶" style="font-family: 'Sunflower', sans-serif;" >삶</option>
+                            <option value = "식생활" style="font-family: 'Sunflower', sans-serif;">식생활</option>
+                            <option value = "의생활" style="font-family: 'Sunflower', sans-serif;">의생활</option>
+                            <option value = "주생활" style="font-family: 'Sunflower', sans-serif;">주생활</option>
+                             <option value = "사회생활" style="font-family: 'Sunflower', sans-serif;" >사회생활</option>
+                            <option value = "삶" style="font-family: 'Sunflower', sans-serif;" >삶</option>
+                            <option value = "경제생활" style="font-family: 'Sunflower', sans-serif;">경제생활</option>
+                            <option value = "교육" style="font-family: 'Sunflower', sans-serif;">교육</option>
+                            <option value = "나라명 및 지명" style="font-family: 'Sunflower', sans-serif;">나라명 및 지명</option>
+                             <option value = "종교" style="font-family: 'Sunflower', sans-serif;" >종교</option>
+                            <option value = "문화" style="font-family: 'Sunflower', sans-serif;">문화</option>
+                            <option value = "정치와 행정" style="font-family: 'Sunflower', sans-serif;">정치와 행정</option>
+                        </optgroup>
+
+                         <optgroup label = "전문용어 수어">
+                          <option value = "법률" style="font-family: 'Sunflower', sans-serif;">법률</option>
+                          <option value = "교통" style="font-family: 'Sunflower', sans-serif;">교통</option>
+                          <option value = "의학" style="font-family: 'Sunflower', sans-serif;">의학</option>
+                          <option value = "정보통신" style="font-family: 'Sunflower', sans-serif;">정보통신</option>
+                          <option value = "불교" style="font-family: 'Sunflower', sans-serif;">불교</option>
+                          <option value = "천주교" style="font-family: 'Sunflower', sans-serif;">천주교</option>
+                          <option value = "기독교" style="font-family: 'Sunflower', sans-serif;">기독교</option>
+                          <option value = "국어 교과 용어" style="font-family: 'Sunflower', sans-serif;">국어 교과 용어</option>
+                          <option value = "경제" style="font-family: 'Sunflower', sans-serif;">경제</option>
+                          <option value = "정치" style="font-family: 'Sunflower', sans-serif;">정치</option>
+                        </optgroup>    
+                    </select>
+                   <button style="margin-left:25%;font-family: 'Sunflower', sans-serif; float:center" class="menu-tabs" type="submit" value="search" >search</button>
+                   <!-- <input type = "submit" value = "search"/>-->
+            </fieldset> 
+        </form>
+  </div>
+    <script>
+      function search2(){
+        location.href = "/search2";
+      }
+    </script>    
+    
+  <!------- 검색 창------->
+  <div class="search" style="width:1200px;margin-left: 180px;">
+    <form name="search_form" action="/search1" method="post">
+      <input id="input" type="text" name="test1" placeholder="단어 입력" />
+      <br>
+    </form>
+  </div>
+ <br><br> 
+<!----- 오늘의 수화----->
+
+      <div class="today" style="width:1050px;margin-left: 180px;">
+     <fieldset style = "width:800;margin-left: 200px;">
+     <legend style="font-family: 'Sunflower', sans-serif;">오늘의 수어</legend>
+    <% if(locals.data3){%>
+      <table border=1px solid black>
+        <% for(let i = 0; i<data3.length; i++){%>
+         <div align="left" style="height: 150px;float:left;padding:25px">
+             <img width="200" height="150" src=<%=data3[i].img%>></img>
+             <div align="center"><%=data3[i].title%></div>
+          </div>
+          <%}%>
+        <%}%>
+      </table><br><br>
+      </fieldset>
+    
+    </div>    
+  <!----------맨위로 버튼 ------------------------------------------------------------>
+    <a style="position:fixed;bottom:20px;right:75px;" href="#" title="맨 위로">
+  <img class="arrow" src="arrow.png"></a> 
+<!----------------출력창--------------------------------------->
+
+<br><br>
+    <form>
+    <% if(locals.data){%>
+      <table style="margin-left: 60px; margin-right: 160px;">
+        <tr>
+          <td class="td_title" >용어</td>
+          <td class="td_content">한국어 정보</td>
+          <td class="td_video">영상</td>
+          <td class="td_img">수형사진</td>
+          <td class="td_add">단어장에 추가하기</td>
+        </tr>
+        <% for(let i = 0; i<data.length; i++){%>
+          <tr>
+            <td><%=data[i].title%></td>
+            <td><%=data[i].des%></td>
+            <td><video width="400" height="400" src=<%=data[i].video%> autoplay="autoplay"></video></td>
+            <td><img width="200" height="200" src=<%=data[i].img%>></img></td>
+            <td><input type="button" class="tdclass" id=<%=data[i].slid%> value="추가" onclick="postid(this.id)"></input></td>
+          </tr>
+          <%}%>
+        <%}%>
+      </table>
+    </form>
+ <div class="fixed">
+ <p >최근 검색한 단어</p>
+      <%if(locals.data2)%>
+      <p><%=locals.data2[0]%></p>
+      <p><%=locals.data2[1]%></p>
+      <p><%=locals.data2[2]%></p>
+      <%if(locals.text1){%>
+  <script>
+    alert(locals.text1)
+  </script>
+  <%}%>
+  </div>
+  </body>
+
+</html>

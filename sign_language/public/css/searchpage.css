@@ -1,0 +1,182 @@
+/*검색 페이지 css*/
+body{
+    text-align: center;
+	text-align : center;
+    padding : 10px 0;
+    font-family: 'Sunflower', sans-serif;
+}
+/*로그아웃버튼 디자인 맞추기*/
+button{
+    background-color: white;
+    border:none;
+
+}
+/*사이트 제목*/
+h1 {
+    margin: 0;
+    letter-spacing: 1rem;  
+}
+/*사이트 부제목*/
+h3 {
+    letter-spacing: 0.3rem;
+    opacity: 0.6;
+}
+/*최근 검색한 단어*/
+.fixed{
+    display: inline-block;
+    position: fixed;
+    left:90%;
+    top: 250px;
+    width: 120px;
+    height: 200px;
+    border-radius: 15px;
+    padding:10px;
+    background-color: #eee;
+}
+/*타이틀 ---------------------------------*/
+.main-tabs
+{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #eee;
+		text-align: center;
+		padding: 20px;
+}
+.menu-tabs,.login-form{
+    display: flex;
+    height:100%;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    color: #000;
+    letter-spacing: 0.1rem;
+		transition: all 0.5s ease;
+		font-size: 1.5rem;
+}
+a{
+    text-decoration: none;
+}
+.menu-tabs-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 70px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background: #fff;
+}
+.menu-tabs:hover{
+    color:white;
+    background: rgba(102,177,241,0.8);
+          transition: all 0.5s ease;
+    cursor: pointer;
+}
+/*------------검색창--------------------------*/
+#input{
+    height:20px ;
+    width:70%;
+    padding:12px 24px;
+    font-size:16px;
+    padding:10px;
+    line-height:18px;
+    border:1px solid #575756;
+    transition: all 250ms ease-in-out;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    outline:none;
+    float:middle;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: 95% center;
+    border-radius: 50px;
+}
+#input::placeholder{
+
+    color:color(#575756 a(0.8));
+    letter-spacing: 1.5px;
+}
+#input:hover,:focus{
+
+    padding:12px,0;
+    outline:0;
+    border:1px solid transparent;
+    border-bottom:1px solid #575756;
+    border-radius: 0;
+    background-position: center;
+}
+.btn_search{
+    width:80px;
+    border:0px;
+    outline:none;
+    background:#1b5ac2;
+    float:right;
+    color:#ffffff
+}
+/*--------------(출력)표스타일-----------------------*/
+table{
+border:1px solid #575756; 
+border-radius:5px;
+text-align: center;
+border-collapse: collapse;
+padding:2px;
+font-family: 'Sunflower', sans-serif;
+
+}
+td,tr,th{
+border:1px solid #575756;
+padding:10px;
+}
+th{
+width:50px;
+}
+.td_title{
+
+    width:10%;
+}
+.td_content{
+   
+    width:15%;
+}
+.td_video{
+
+    width:35%;
+}
+.td_img{
+
+    width:30%;
+}
+.td_add{
+   width:10%;
+}
+/*추가버튼*/
+.tdclass{
+    width:100px;
+    background-color: #eee;
+    border: none;
+    border-radius: 3px;
+    color:#000;
+    padding: 15px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+    font-family: 'Sunflower', sans-serif;
+}
+.tdclass:hover{
+    color:white;
+    background: rgba(102,177,241,0.8);
+    transition: all 0.5s ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+/*맨위로 버튼*/
+.arrow
+{
+    width:50px;
+    height:50px;
+}
+
