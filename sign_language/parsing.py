@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as elemTree
 import pymysql
 
-conn = pymysql.connect(host='localhost', user='root', password='6725',db='sl', charset='utf8')
+conn = pymysql.connect(host='localhost', user='root', password='038062',db='signlanguage', charset='utf8')
 
 
 
