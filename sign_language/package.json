@@ -1,21 +1,21 @@
 {
   "name": "signlanguage",
   "version": "1.0.0",
-  "description": "오픈소스웹프로그램 기말 프로젝트",
+  "description": "데이터베이스 시스템 프로젝트",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Atom-478/SINGLANGUAGE.git"
+    "url": "git+https://github.com/wjdgoruds2/DATABASE_SYSTEM.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Atom-478/SINGLANGUAGE/issues"
+    "url": "https://github.com/wjdgoruds2/DATABASE_SYSTEM/issues"
   },
-  "homepage": "https://github.com/Atom-478/SINGLANGUAGE#readme",
+  "homepage": "https://github.com/wjdgoruds2/DATABASE_SYSTEM#readme",
   "dependencies": {
     "alert": "^5.0.0",
     "alert-node": "^3.0.11",
